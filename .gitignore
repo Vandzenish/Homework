@@ -1,6 +1,12 @@
-.exe
-.bdsproj
-.local
-.cfg
-.~1~
-.~2~
+*.bdsproj
+*.local
+*.cfg
+*.exe
+*.~1~
+*.~2~
+
+
+*~$*.docx
+*~$*.pptx
+
+/0. Closed test
