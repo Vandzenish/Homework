@@ -23,9 +23,9 @@ begin
             for a := 0 to I do if ram=mas[a] then goto Lab;
         mas[i]:=ram;
 
-        //write(mas[i], ' ');    // для проверки значений массива
+        write(mas[i], ' ');    // для проверки значений массива
     end;
-      for b := 0 to (high(mas) div 2) do begin   // цикл для действий с массивом
+      for b := 0 to high(mas) div 2 do begin   // цикл для действий с массивом
             //if mas[b]>(high(mas)/2+1) then write(mas[b], ' ') // от задания 2.4
             sum1:= sum1 + mas[b];
       end;
