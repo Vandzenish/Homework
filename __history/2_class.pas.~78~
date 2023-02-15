@@ -17,8 +17,8 @@ begin
     setlength(mas, N);
     for I := 0 to high(mas) do  begin
         Lab:
-        ram:=random(high(mas));
-            write(' -',ram, '- ')
+        ram:=random(high(mas)+2); // Почему-то нужно +2 иначе идёт
+           // write(' -',ram, '- ');    //    в бесконечный перебор
             for a := 0 to I do if ram=mas[a] then goto Lab;
 
         mas[i]:=ram;

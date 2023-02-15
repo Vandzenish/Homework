@@ -21,13 +21,13 @@ begin
            // write(' -',ram, '- ');    //    в бесконечный перебор
             for a := 0 to I do if ram=mas[a] then goto Lab;
         mas[i]:=ram;
-
-        //write(mas[i], ' ');
-    end;
-      for b := 0 to high(mas) do begin
-            if mas[b]>(high(mas)/2+1) then write(mas[b], ' ')
+        for n := 0 to high(mass) do begin
+            if mas[n]>(high(mas)/2) then write(mas[n], ' ')
             
         end;
+        //write(mas[i], ' ');
+    end;
+
 
 
 

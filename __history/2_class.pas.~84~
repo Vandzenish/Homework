@@ -25,7 +25,7 @@ begin
         //write(mas[i], ' ');
     end;
       for b := 0 to high(mas) do begin
-            if mas[b]>(high(mas)/2+1) then write(mas[b], ' ')
+            if mas[b]>(high(mas)/2) then write(mas[b], ' ')
             
         end;
 
