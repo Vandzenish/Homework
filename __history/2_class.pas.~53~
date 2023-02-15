@@ -1,0 +1,36 @@
+program hm;
+
+{$APPTYPE CONSOLE}
+
+uses
+    SysUtils;
+    
+var
+    mas : array [0..100] of integer;
+    I, a, ram, count : integer;
+//label
+  //  Lab;
+begin
+
+    for I := 0 to high(mas) do  begin
+
+        count:=0;
+        ram:=random(high(mas));
+        for a := 0 to I do begin
+
+            if ram = mas[a] then
+                break
+            else begin
+                count:=count+1;
+            end;
+         if count = I then mas[i]:=ram;
+         //if mas[i-1]= 0 then mas[i-1]:=i;
+         end;
+        write(mas[i], ' ');
+    end;
+
+
+
+
+
+end.
