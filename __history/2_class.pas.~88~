@@ -7,25 +7,31 @@ uses
     
 var
     mas : array of integer;
-    I, a, ram, N : integer;
+    I, a, b, ram, N, sum1 : integer;
 label
     Lab;
 begin
+    sum1:=0;
     write('Enter N :');
     Readln(N);
-    
+
     setlength(mas, N);
     for I := 0 to high(mas) do  begin
         Lab:
         ram:=random(high(mas)+2); // Почему-то нужно +2 иначе идёт
            // write(' -',ram, '- ');    //    в бесконечный перебор
             for a := 0 to I do if ram=mas[a] then goto Lab;
-
         mas[i]:=ram;
-        write(mas[i], ' ');
+
+        //write(mas[i], ' ');
     end;
-
-
+      for b := 0 to high(mas) do begin
+            //if mas[b]>(high(mas)/2+1) then write(mas[b], ' ') // от задания 2.4
+              if (mas[b] mod 2) = 1  then begin
+                  sum1:= sum1 + mas[b];
+              end;
+        end;
+        write('Sum: ', sum1);
 
 
 

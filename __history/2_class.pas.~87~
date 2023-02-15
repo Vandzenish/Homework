@@ -16,17 +16,17 @@ begin
     Readln(N);
 
     setlength(mas, N);
-    for I := 0 to high(mas) do  begin  // цикл дл€ генерации слйчайного N-ого массива
+    for I := 0 to high(mas) do  begin
         Lab:
         ram:=random(high(mas)+2); // ѕочему-то нужно +2 иначе идЄт
            // write(' -',ram, '- ');    //    в бесконечный перебор
             for a := 0 to I do if ram=mas[a] then goto Lab;
         mas[i]:=ram;
 
-        //write(mas[i], ' ');    // дл€ проверки значений массива
+        //write(mas[i], ' ');
     end;
-      for b := 0 to high(mas) do begin   // цикл дл€ действий с массивом
-            //if mas[b]>(high(mas)/2+1) then write(mas[b], ' ') // от задани€ 2.4
+      for b := 0 to high(mas) do begin
+            //if mas[b]>(high(mas)/2+1) then write(mas[b], ' ')
               if (mas[b] mod 2) = 1  then begin
                   sum1:= sum1 + mas[b];
               end;
