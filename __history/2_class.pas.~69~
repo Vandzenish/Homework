@@ -17,12 +17,11 @@ begin
     setlength(mas, N);
     for I := 0 to high(mas) do  begin
         Lab:
-        ram:=random(high(mas)+2);
-           // write(' -',ram, '- ');
+        ram:=random(high(mas));
             for a := 0 to I do if ram=mas[a] then goto Lab;
 
         mas[i]:=ram;
-        write(mas[i], ' ');
+        write(mas[i], ' ', I, ' ');
     end;
 
 

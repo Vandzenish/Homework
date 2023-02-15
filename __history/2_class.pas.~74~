@@ -15,11 +15,11 @@ begin
     Readln(N);
     
     setlength(mas, N);
-    for I := 0 to high(mas) do  begin
+    for I := 0 to high(mas)-3 do  begin
         Lab:
-        ram:=random(high(mas)+2);
+        ram:=random(high(mas));
            // write(' -',ram, '- ');
-            for a := 0 to I do if ram=mas[a] then goto Lab;
+            for a := 0 to I-3 do if ram=mas[a] then goto Lab;
 
         mas[i]:=ram;
         write(mas[i], ' ');
