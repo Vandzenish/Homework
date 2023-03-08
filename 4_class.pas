@@ -47,12 +47,20 @@ uses
 	 arg.space := sqrt(p * a * b * c);
 	 tringle_space := arg; 
 	end;
-	
+
+   procedure array_of_tringle(var arg : array of tringle);
+	var i : integer;
+	begin            // works with array straight away + number of elements in array
+		for i := 0 to high(arg) do begin
+		arg[i] := random_tringle(arg[i]);
+		end;
+	end;
+
    procedure print_vec(arg : vec);
 	begin
 		writeln('(', arg.x:5:3, ';', arg.y:5:3, ')', ' Length:', arg.length:5:3);
 	end;
-   procedure print_tringle(arg : tringle);
+   procedure print_tringle(arg : tringle);overload;
 	begin
 		writeln;
 		writeln('Tringle N', arg.ID);
@@ -63,16 +71,22 @@ uses
 		writeln('With area:');
 		write(arg.space:5:3);
 	end;
-
+	procedure print_tringle(arg : array of tringle);overload;
+	var i : integer;
+	begin
+		for i:=0 to high(arg) do begin 
+		print_tringle(arg[i]);
+		end;
+	end;
 
    var
-    num : tringle;
+    num : array [0..30] of tringle;
 
 
 begin
-    num := random_tringle(num);
-	num := tringle_space(num);
-	print_tringle(num);
+    array_of_tringle(num);
+	print_tringle(num)
+	//print_tringle(num);
 
 
 end.
