@@ -6,20 +6,20 @@ uses
     SysUtils,
 	Math;
   var
-	ID_g : integer;
+	ID_g : integer; //global id
   
   Type
-	vec = record
+	vec = record   // coordinates of vector
 		x,y : real;
 		length : real;
 	end;
-  tringle = record
+  tringle = record   // tringle 
 	vec1, vec2, vec3 : vec;
 	ID : integer;
 	space : real;
    end;
    
-   function random_vec(arg : vec): vec;
+   function random_vec(arg : vec): vec;   // random vector
 	begin
 		arg.x := random(100);
 		arg.y := random(100);
@@ -27,7 +27,7 @@ uses
 		random_vec := arg;
 	end;
    
-   function random_tringle(arg : tringle): tringle; 
+   function random_tringle(arg : tringle): tringle;  // random tringle 
 	begin
 		arg.vec1 := random_vec(arg.vec1);
 		arg.vec2 := random_vec(arg.vec2);
@@ -41,26 +41,53 @@ uses
 	var p, a,b,c : real;
 	begin
 	 p := (arg.vec1.length + arg.vec2.length + arg.vec3.length)/2;
-	 a := abs(p - arg.vec1.length);
+	 a := abs(p - arg.vec1.length);  // abs is module of number because no negative root
 	 b := abs(p - arg.vec2.length);
 	 c := abs(p - arg.vec3.length);
 	 arg.space := sqrt(p * a * b * c);
 	 tringle_space := arg; 
 	end;
 
-   procedure array_of_tringle(var arg : array of tringle);
-	var i : integer;
+   procedure array_of_tringle(var arg : array of tringle); // array of tringles (array is given)
+	var i : integer; // procedure because you can't make function as an array
 	begin            // works with array straight away + number of elements in array
 		for i := 0 to high(arg) do begin
 		arg[i] := random_tringle(arg[i]);
+		arg[i] := tringle_space(arg[i]);
 		end;
 	end;
 
-   procedure print_vec(arg : vec);
+   procedure sort_area_tringle_array(var arg : array of tringle);
+	var 
+		i,b : integer;
+		lnum : tringle;
+	begin
+		for b:= 0 to high(arg) do begin 
+			for i:= 0 to high(arg)-1 do begin
+				lnum := arg[b];
+				if lnum.space < arg[i+1].space then begin 
+					arg[b] := arg[i+1];
+					arg[i+1] := lnum;
+					lnum := arg[b];
+				end;
+				
+			end;
+			 
+		end;   // at the end we get array kind of {5,1,2,3,4,}
+		lnum := arg[high(arg)]; // take last element {5,1,2,3,4} -4-
+		arg[high(arg)] := arg[0]; // put first element in last place {5,1,2,3,5} -4-
+		for i := 0 to high(arg)-2 do begin  // shift array except last {1,2,3,-,5} -4-
+			arg[i] := arg[i+1];
+		end;
+		arg[high(arg)-1] := lnum; // put copy back so no data lost {1,2,3,4,5}
+	end;
+
+   procedure print_vec(arg : vec); // print vector
 	begin
 		writeln('(', arg.x:5:3, ';', arg.y:5:3, ')', ' Length:', arg.length:5:3);
 	end;
-   procedure print_tringle(arg : tringle);overload;
+   
+   procedure print_tringle(arg : tringle);overload; // 
 	begin
 		writeln;
 		writeln('Tringle N', arg.ID);
@@ -68,25 +95,27 @@ uses
 		print_vec(arg.vec1);
 		print_vec(arg.vec2);
 		print_vec(arg.vec3);
-		writeln('With area:');
-		write(arg.space:5:3);
+		write('With area:');
+		writeln(arg.space:5:3);
 	end;
+	
 	procedure print_tringle(arg : array of tringle);overload;
-	var i : integer;
-	begin
-		for i:=0 to high(arg) do begin 
-		print_tringle(arg[i]);
-		end;
+		var i : integer;
+		begin
+			for i:=0 to high(arg) do begin 
+			writeln;
+			print_tringle(arg[i]);
+			end;
 	end;
 
    var
-    num : array [0..30] of tringle;
+    num : array [0..10] of tringle;
 
 
 begin
     array_of_tringle(num);
+	sort_area_tringle_array(num);
 	print_tringle(num)
-	//print_tringle(num);
 
 
 end.
