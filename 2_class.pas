@@ -25,12 +25,15 @@ begin
 
         //write(mas[i], ' ');    // для проверки значений массива
     end;
-      for b := 0 to (high(mas) div 2) do begin   // цикл для действий с массивом
-            //if mas[b]>(high(mas)/2+1) then write(mas[b], ' ') // от задания 2.4
-            sum1:= sum1 + mas[b];
-      end;
-        write('Sum: ', sum1);
+      	
+	// Why do you need "b" variable if ypu could use "a"?
+	// it is free since previous cycle
+	for b := 0 to (high(mas) div 2) do begin   
+		//if mas[b]>(high(mas)/2+1) then write(mas[b], ' ') // from objective 2.4
+		sum1:= sum1 + mas[b];
+	end;
 
-
+	write('Sum: ', sum1);
+end.
 
 end.
