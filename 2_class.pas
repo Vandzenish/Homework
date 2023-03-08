@@ -19,7 +19,7 @@ begin
     for i := 0 to high(mas) do  begin 
 		{OLD CODE:
         Lab:
-		// почему-то нужно +2 иначе идет в бесконечный перебор
+		// ГЇГ®Г·ГҐГ¬Гі-ГІГ® Г­ГіГ¦Г­Г® +2 ГЁГ­Г Г·ГҐ ГЁГ¤ГҐГІ Гў ГЎГҐГ±ГЄГ®Г­ГҐГ·Г­Г»Г© ГЇГҐГ°ГҐГЎГ®Г°
         ram:=random(high(mas)+2); 
             for a := 0 to i do if ram=mas[a] then goto Lab;
         mas[i]:=ram;
@@ -37,13 +37,15 @@ begin
 		// (code logic unmodified)
 		writeln(mas[i]);
     end;
-	
+      	
 	// Why do you need "b" variable if ypu could use "a"?
 	// it is free since previous cycle
-	for b := 0 to (high(mas) div 2) do begin   // цикл для действий с массивом
-		//if mas[b]>(high(mas)/2+1) then write(mas[b], ' ') // от задания 2.4
+	for b := 0 to (high(mas) div 2) do begin   
+		//if mas[b]>(high(mas)/2+1) then write(mas[b], ' ') // from objective 2.4
 		sum1:= sum1 + mas[b];
 	end;
-	
+
 	write('Sum: ', sum1);
+end.
+
 end.
