@@ -21,8 +21,8 @@ uses
    
    function random_vec(arg : vec): vec;   // random vector
 	begin
-		arg.x := random(100);
-		arg.y := random(100);
+		arg.x := random(10000);
+		arg.y := random(10000);
 		arg.length := sqrt(sqr(arg.x) + sqr(arg.y));
 		random_vec := arg;
 	end;
@@ -70,8 +70,8 @@ uses
 					arg[i+1] := lnum;
 					lnum := arg[b];
 				end;
-				
 			end;
+			writeln(b/high(arg)*100:6:2, '%');
 			 
 		end;   // at the end we get array kind of {5,1,2,3,4,}
 		lnum := arg[high(arg)]; // take last element {5,1,2,3,4} -4-
@@ -109,11 +109,17 @@ uses
 	end;
 
    var
-    num : array [0..10] of tringle;
-
+    num : array of tringle;
+    num2,i : integer;
 
 begin
-    array_of_tringle(num);
+    readln(num2);
+	setlength(num, num2);
+	for i := 0 to high(num) do begin
+		num[i] := random_tringle(num[i]);
+		num[i] := tringle_space(num[i]);
+		writeln(i/num2*100:6:2, '%');
+		end;
 	sort_area_tringle_array(num);
 	print_tringle(num)
 
