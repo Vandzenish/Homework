@@ -7,23 +7,35 @@ uses
     Math;
 var
     mas : array of integer;
-    I, a, b, ram, N, sum1 : integer;
+    i, a, b, ram, N, sum1 : integer;
 label
     Lab;
 begin
     sum1:=0;
     write('Enter N :');
     Readln(N);
-
     setlength(mas, N);
-    for I := 0 to high(mas) do  begin  // цикл для генерации слйчайного N-ого массива
+	
+    for i := 0 to high(mas) do  begin 
+		{OLD CODE:
         Lab:
-        ram:=random(high(mas)+2); // Почему-то нужно +2 иначе идёт
-           // write(' -',ram, '- ');    //    в бесконечный перебор
-            for a := 0 to I do if ram=mas[a] then goto Lab;
+		// ГЇГ®Г·ГҐГ¬Гі-ГІГ® Г­ГіГ¦Г­Г® +2 ГЁГ­Г Г·ГҐ ГЁГ¤ГҐГІ Гў ГЎГҐГ±ГЄГ®Г­ГҐГ·Г­Г»Г© ГЇГҐГ°ГҐГЎГ®Г°
+        ram:=random(high(mas)+2); 
+            for a := 0 to i do if ram=mas[a] then goto Lab;
         mas[i]:=ram;
-
-        //write(mas[i], ' ');    // для проверки значений массива
+		}
+		
+		// NEW CODE:
+		Lab:
+			ram:=random(high(mas)+2); 
+			for a := 0 to i do
+				if ram = mas[a] then
+					goto Lab;
+			mas[i] := ram;
+		// just look how it is become better with
+		// this indents and newlines
+		// (code logic unmodified)
+		writeln(mas[i]);
     end;
       	
 	// Why do you need "b" variable if ypu could use "a"?
